@@ -15,7 +15,7 @@ return [0, 1].
 #include <map>
 #include <vector>
 
-public class Solution {
+class Solution {
 public:
     std::map<int,int> numMap;
     std::vector<int> result;
