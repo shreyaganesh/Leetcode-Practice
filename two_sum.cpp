@@ -12,10 +12,24 @@ return [0, 1].
 **/
 
 #include "iostream"
+#include <map>
 
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
+    std::vector<int> twoSum(vector<int>& nums, int target) {
+			std::map<int,int> numMap;
+			std::vector<int> result;
+			for(int i=0; i<nums.length(); i++) {
+				int numToFind = target-nums[i];
+				if(numMap.find(numToFind)!=NULL) {
+					result[0]=i;
+					result[1]=numMap[numToFind];
+					break;
+				}
+				else {
+					
+				}
+			}
 
     }
 };
