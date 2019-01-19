@@ -74,7 +74,7 @@ int main() {
 	std::vector<int> arrayVals{1,2,3,4,5};
 	int findNum = 8;
 	std::vector<int> result;
-	Solution two_sum = new Solution();
+	Solution two_sum;
 
 	result=two_sum.twoSum(arrayVals,findNum,0);
 	std::cout<<"Brute force result: "<<result[0]<<","<<result[1]<<"\n";
