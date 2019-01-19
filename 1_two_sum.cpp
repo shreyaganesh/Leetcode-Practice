@@ -17,9 +17,9 @@ return [0, 1].
 
 class Solution {
 public:
-  static int caseCheck=0;
+  static int caseCheck;
     std::vector<int> result;
-    std::vector<int> twoSum(vector<int>& nums, int target) {
+    std::vector<int> twoSum(std::vector<int>& nums, int target) {
 			switch(caseCheck) {
         case 0: //Brute Force
             for(int i = 0; i<nums.length()-1; i++){
@@ -38,16 +38,16 @@ public:
 
 	//FIRST PASS: populating the map with key as required difference between current element and target
         for(int i=0; i<nums.length(); i++) {
-	int numToFind = target-nums[i];
-        numMap[numToFind]=i;
+          int numToFind = target-nums[i];
+          numMap[numToFind]=i;
         }
         //SECOND PASS: traversing populated map to find the first element with a match (expecting it's the only element)
         for(int i = 0; i<nums.length(); i++) {
-		if((numMap.find(numToFind)!=numMap.end()) && (numMap[nums[i]]!=i)){
-			result[0]=i;
-			result[1]=numMap[nums[i]];
-			break;
-		}
+          if((numMap.find(nums[i])!=numMap.end()) && (numMap[nums[i]]!=i)){
+            result[0]=i;
+            result[1]=numMap[nums[i]];
+            break;
+          }
         }
         break;
 
@@ -79,12 +79,12 @@ int main() {
 	Solution two_sum = new Solution();
 
 	result=two_sum.twoSum(arrayVals,findNum);
-	cout<<"Brute force result: "<<result[0]<<","<<result[1]<<"\n";
+	std::cout<<"Brute force result: "<<result[0]<<","<<result[1]<<"\n";
 	Solution.caseCheck++;
 	result=two_sum.twoSum(arrayVals,findNum);
-	cout<<"Two-pass result: "<<result[0]<<","<<result[1]<<"\n";
+	std::cout<<"Two-pass result: "<<result[0]<<","<<result[1]<<"\n";
 	Solution.caseCheck++;
 	result=two_sum.twoSum(arrayVals,findNum);
-	cout<<"Single pass result: "<<result[0]<<","<<result[1]<<"\n";
+	std::cout<<"Single pass result: "<<result[0]<<","<<result[1]<<"\n";
 	return 0;
 }
