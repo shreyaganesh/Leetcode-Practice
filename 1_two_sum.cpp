@@ -22,11 +22,11 @@ public:
     std::vector<int> twoSum(std::vector<int>& nums, int target) {
 			switch(caseCheck) {
         case 0: //Brute Force
-            for(int i = 0; i<nums.length()-1; i++){
-              for(int j = i+1; j<nums.length(); j++) {
+            for(int i = 0; i<nums.size()-1; i++){
+              for(int j = i+1; j<nums.size(); j++) {
                 if(nums[i]+nums[j]==target){
-                  result[0] = i;
-                  result[1] = j;
+                  result.push_back(i)
+                  result.push_back(j);
                   return result;
                 }
               }
@@ -37,15 +37,15 @@ public:
         std::map<int,int> numMap;
 
 	//FIRST PASS: populating the map with key as required difference between current element and target
-        for(int i=0; i<nums.length(); i++) {
+        for(int i=0; i<nums.size(); i++) {
           int numToFind = target-nums[i];
           numMap[numToFind]=i;
         }
         //SECOND PASS: traversing populated map to find the first element with a match (expecting it's the only element)
-        for(int i = 0; i<nums.length(); i++) {
+        for(int i = 0; i<nums.size(); i++) {
           if((numMap.find(nums[i])!=numMap.end()) && (numMap[nums[i]]!=i)){
-            result[0]=i;
-            result[1]=numMap[nums[i]];
+            result.push_back(i)
+            result.push_back(numMap[nums[i]]);
             break;
           }
         }
@@ -53,10 +53,10 @@ public:
 
         case 2: //Single pass map
         std::map<int,int>numMap;
-        for(int i=0; i<nums.length(); i++) {
+        for(int i=0; i<nums.size(); i++) {
           if((numMap.find(nums[i])!=numMap.end()) && (numMap[nums[i]]!=i)) {
-            result[0]=i;
-            result[1]=numMap[nums[i]];
+            result.push_back(i)
+            result.push_back(numMap[nums[i]]);
             return result;
           }
           else {
