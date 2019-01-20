@@ -81,12 +81,10 @@ int main() {
 
 	result=two_sum.twoSum(arrayVals,findNum,0);
 	std::cout<<"Brute force result: "<<result[0]<<","<<result[1]<<"\n";
-  for(auto x:result)
+  /*for(auto x:result)
   std::cout<<x<<",";
-  std::cout<<"\n";
-
-	result=two_sum.twoSum(arrayVals,findNum,1);
-	std::cout<<"Two-pass result: "<<result[0]<<","<<result[1]<<"\n";
+  std::cout<<"\n";*/
+  result.clear();
 	result=two_sum.twoSum(arrayVals,findNum,2);
 	std::cout<<"Single pass result: "<<result[0]<<","<<result[1]<<"\n";
 	return 0;
