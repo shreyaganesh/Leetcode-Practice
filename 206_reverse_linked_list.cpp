@@ -9,7 +9,7 @@ struct ListNode{
 
 class Solution {
 public:
-  ListNode* add_node(ListNode*, ListNode*);
+  ListNode* add_node(ListNode*, int);
 
   ListNode* reverse_ll(ListNode* head) {
     ListNode* temp=head->next;
@@ -26,18 +26,16 @@ public:
   }
 }
 
-ListNode* Solution::add_node(ListNode* head, int data) {
+void Solution::add_node(ListNode** head, int data) {
   ListNode* node = new ListNode(data);
-  if(head==NULL)
-    return node;
+  if(*head==NULL)
+  *head=node;
 
-  ListNode* temp=head;
+  ListNode* temp=*head;
   while(temp->next!=NULL) {
     temp=temp->next;
   }
   temp->next=node;
-
-  return head;
 }
 
 int main() {
