@@ -29,9 +29,9 @@ public:
 void Solution::add_node(ListNode** head, int data) {
   ListNode* node = new ListNode(data);
   if(*head==NULL)
-  *head=node;
+  head=node;
 
-  ListNode* temp=*head;
+  ListNode* temp=head;
   while(temp->next!=NULL) {
     temp=temp->next;
   }
