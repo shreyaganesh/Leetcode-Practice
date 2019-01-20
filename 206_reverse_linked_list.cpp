@@ -9,7 +9,7 @@ struct ListNode{
 
 class Solution {
 public:
-  void add_node(ListNode*, int);
+  void add_node(ListNode**, int);
 
   ListNode* reverse_ll(ListNode* head) {
     ListNode* temp=head->next;
@@ -43,7 +43,7 @@ std::vector<int>elements{1,2,3,4,5};
 Solution linked_list;
 ListNode* head=NULL;
 for(int i = 0; i<elements.size(); i++) {
-  head=linked_list.add_node(head,elements[i]);
+  linked_list.add_node(head,elements[i]);
 }
 std::cout<<"LINKED LIST:\n";
 ListNode* current=head;
@@ -51,7 +51,7 @@ while(current->next!=NULL)
   std::cout<<current->data<<"->";
 std::cout<<current->data<<std::endl;
 
-linked_list.reverse_ll(head);
+head=linked_list.reverse_ll(head);
 std::cout<<"REVERSED LINKED LIST:\n";
 current=head;
 while(current->next!=NULL)
