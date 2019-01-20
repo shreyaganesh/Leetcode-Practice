@@ -22,7 +22,8 @@ public:
       current=temp;
       temp=temp->next;
     }
-    return prev;
+
+    return current;
   }
 };
 
