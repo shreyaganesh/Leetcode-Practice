@@ -12,15 +12,14 @@ public:
   void add_node(ListNode**, int);
 
   ListNode* reverse_ll(ListNode* head) {
-    ListNode* temp=head->next;
     ListNode* current=head;
     ListNode* prev=NULL;
 
-    while(temp!=NULL) {
+    while(current!=NULL) {
+      ListNode* temp=current->next;
       current->next=prev;
       prev=current;
       current=temp;
-      temp=temp->next;
     }
     return prev;
   }
