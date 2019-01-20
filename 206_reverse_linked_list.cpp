@@ -48,15 +48,19 @@ for(int i = 0; i<elements.size(); i++) {
 }
 std::cout<<"LINKED LIST:\n";
 ListNode* current=head;
-while(current->next!=NULL)
+while(current->next!=NULL) {
   std::cout<<current->data<<"->";
+  current=current->next;
+}
 std::cout<<current->data<<std::endl;
 
 head=linked_list.reverse_ll(head);
 std::cout<<"REVERSED LINKED LIST:\n";
 current=head;
-while(current->next!=NULL)
+while(current->next!=NULL) {
   std::cout<<current->data<<"->";
+  current=current->next;
+}
 std::cout<<current->data<<std::endl;
 
   return 0;
