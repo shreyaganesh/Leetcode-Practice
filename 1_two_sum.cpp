@@ -11,6 +11,9 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 **/
 
+/**
+Code logic works, but some memory issues where Two-pass map isn't working.
+**/
 #include "iostream"
 #include <map>
 #include <vector>
@@ -33,7 +36,7 @@ public:
             }
             break;
 
-	case 1: //Two-pass Map
+	/*case 1: //Two-pass Map
 
 	//FIRST PASS: populating the map with key as required difference between current element and target
         for(int i=0; i<nums.size(); i++) {
@@ -48,7 +51,7 @@ public:
             break;
           }
         }
-        break;
+        break;*/
 
         case 2: //Single pass map
         for(int i=0; i<nums.size(); i++) {
@@ -78,6 +81,10 @@ int main() {
 
 	result=two_sum.twoSum(arrayVals,findNum,0);
 	std::cout<<"Brute force result: "<<result[0]<<","<<result[1]<<"\n";
+  for(auto x:result)
+  std::cout<<x<<",";
+  std::cout<<"\n";
+
 	result=two_sum.twoSum(arrayVals,findNum,1);
 	std::cout<<"Two-pass result: "<<result[0]<<","<<result[1]<<"\n";
 	result=two_sum.twoSum(arrayVals,findNum,2);
