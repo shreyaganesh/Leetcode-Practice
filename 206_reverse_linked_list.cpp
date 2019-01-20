@@ -30,12 +30,13 @@ void Solution::add_node(ListNode** head, int data) {
   ListNode* node = new ListNode(data);
   if(*head==NULL)
   *head=node;
-
-  ListNode* temp=*head;
-  while(temp->next!=NULL) {
-    temp=temp->next;
+  else {
+    ListNode* temp=*head;
+    while(temp->next!=NULL) {
+      temp=temp->next;
+    }
+    temp->next=node;
   }
-  temp->next=node;
 }
 
 int main() {
