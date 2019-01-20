@@ -43,7 +43,7 @@ std::vector<int>elements{1,2,3,4,5};
 Solution linked_list;
 ListNode* head=NULL;
 for(int i = 0; i<elements.size(); i++) {
-  linked_list.add_node(head,elements[i]);
+  linked_list.add_node(&head,elements[i]);
 }
 std::cout<<"LINKED LIST:\n";
 ListNode* current=head;
