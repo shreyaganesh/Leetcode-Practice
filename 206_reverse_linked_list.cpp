@@ -5,7 +5,7 @@ struct ListNode{
   int data;
   ListNode* next;
   ListNode(int a):data(a),next(NULL) {}
-}ListNode;
+};
 
 class Solution {
 public:
