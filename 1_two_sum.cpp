@@ -11,9 +11,6 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 **/
 
-/**
-Code logic works, but some memory issues where Two-pass map isn't working.
-**/
 #include "iostream"
 #include <map>
 #include <vector>
@@ -23,8 +20,8 @@ public:
     std::map<int,int> numMap;
     std::vector<int> result;
     std::vector<int> twoSum(std::vector<int>& nums, int target, int caseCheck) {
-			switch(caseCheck) {
-        case 0: //Brute Force
+        switch(caseCheck) {
+            case 0: //Brute Force
             for(int i = 0; i<nums.size()-1; i++){
               for(int j = i+1; j<nums.size(); j++) {
                 if(nums[i]+nums[j]==target){
@@ -35,23 +32,23 @@ public:
               }
             }
             break;
+            
+            case 1: //Single pass map
+            for(int i=0; i<nums.size(); i++) {
+                if((numMap.find(nums[i])!=numMap.end()) && (numMap[nums[i]]!=i)) {
+                    result.push_back(i);
+                    result.push_back(numMap[nums[i]]);
+                    return result;
+                }
+                else {
+                    int numToFind = target-nums[i];
+                    numMap[numToFind]=i;
+                }
+            }
+            break;
 
-	     case 1: //Single pass map
-        for(int i=0; i<nums.size(); i++) {
-          if((numMap.find(nums[i])!=numMap.end()) && (numMap[nums[i]]!=i)) {
-            result.push_back(i);
-            result.push_back(numMap[nums[i]]);
-            return result;
-          }
-          else {
-            int numToFind = target-nums[i];
-            numMap[numToFind]=i;
-          }
+            default: std::cout<<"Invalid case\n";
         }
-        break;
-
-        default: std::cout<<"Invalid case\n";
-      }
     }
 };
 
@@ -64,10 +61,11 @@ int main() {
 
 	result=two_sum.twoSum(arrayVals,findNum,0);
 	std::cout<<"Brute force result: "<<result[0]<<","<<result[1]<<"\n";
-  /*for(auto x:result)
-  std::cout<<x<<",";
-  std::cout<<"\n";*/
-  result.clear();
+	/*for(auto x:result)
+	std::cout<<x<<",";
+	std::cout<<"\n";*/
+
+	result.clear();
 	result=two_sum.twoSum(arrayVals,findNum,1);
 	std::cout<<"Single pass result: "<<result[0]<<","<<result[1]<<"\n";
 	return 0;
