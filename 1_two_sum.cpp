@@ -36,24 +36,7 @@ public:
             }
             break;
 
-	/*case 1: //Two-pass Map
-
-	//FIRST PASS: populating the map with key as required difference between current element and target
-        for(int i=0; i<nums.size(); i++) {
-          int numToFind = target-nums[i];
-          numMap[numToFind]=i;
-        }
-        //SECOND PASS: traversing populated map to find the first element with a match (expecting it's the only element)
-        for(int i = 0; i<nums.size(); i++) {
-          if((numMap.find(nums[i])!=numMap.end()) && (numMap[nums[i]]!=i)){
-            result.push_back(i);
-            result.push_back(numMap[nums[i]]);
-            break;
-          }
-        }
-        break;*/
-
-        case 2: //Single pass map
+	     case 1: //Single pass map
         for(int i=0; i<nums.size(); i++) {
           if((numMap.find(nums[i])!=numMap.end()) && (numMap[nums[i]]!=i)) {
             result.push_back(i);
@@ -85,7 +68,7 @@ int main() {
   std::cout<<x<<",";
   std::cout<<"\n";*/
   result.clear();
-	result=two_sum.twoSum(arrayVals,findNum,2);
+	result=two_sum.twoSum(arrayVals,findNum,1);
 	std::cout<<"Single pass result: "<<result[0]<<","<<result[1]<<"\n";
 	return 0;
 }
