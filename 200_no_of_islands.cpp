@@ -27,14 +27,14 @@ public:
   }
 
   void markIslands(vector<vector<char>>& grid,vector<vector<bool>> &visited, int i, int j, int rows, int cols) {
-    visited[i][j]=1;
-    if(i>0 && grid[i-1][j]=='1' && ~visited[i-1][j])
+    visited[i][j]=true;
+    if(i>0 && grid[i-1][j]=='1' && !visited[i-1][j])
       markIslands(grid, visited, i-1, j, rows, cols);
-    if(j>0 && grid[i][j-1]=='1' && ~visited[i][j-1])
+    if(j>0 && grid[i][j-1]=='1' && !visited[i][j-1])
       markIslands(grid, visited, i, j-1, rows, cols);
-    if(i<(rows-1) && grid[i+1][j]=='1' && ~visited[i+1][j])
+    if(i<(rows-1) && grid[i+1][j]=='1' && !visited[i+1][j])
       markIslands(grid, visited, i+1, j, rows, cols);
-    if(j<(cols-1) && grid[i][j+1]=='1' && ~visited[i][j+1])
+    if(j<(cols-1) && grid[i][j+1]=='1' && !visited[i][j+1])
       markIslands(grid, visited, i, j+1, rows, cols);
   }
 };
@@ -42,9 +42,9 @@ public:
 int main() {
   Solution islands;
   const int rows=4, cols=5;
-  vector<vector<char>> grid_input(rows,vector<char>(cols,'0'));
+  vector<vector<char>> grid_input;
   int temp[rows][cols]={{1,1,1,1,0},{1,1,0,1,0},{1,1,0,0,0},{0,0,0,0,0}};
-  vector<char> tempRow;
+  vector<int> tempRow;
   for(int i = 0; i<rows; i++){
     for(int j =0; j<cols; j++){
       tempRow.push_back('0'+temp[i][j]);
