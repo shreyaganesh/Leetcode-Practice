@@ -34,7 +34,7 @@ int main() {
   vector<int> input{1,2,3,4,5,10};
   int index = pivot.pivotIndex(input);
   cout<<"Input Vector: ";
-  for(auto x:input) {std::cout<<x<<" "};
+  for(auto x:input) {std::cout<<x<<" ";}
   cout<<endl;
   cout<<"Pivot Index: "<<index<<endl;
   return 0;
