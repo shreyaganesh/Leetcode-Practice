@@ -41,13 +41,16 @@ public:
 
 int main() {
   Solution islands;
-  vector<vector<char>> grid_input;
   const int rows=4, cols=5;
+  vector<vector<char>> grid_input(rows,vector<char>(cols,'0'));
   int temp[rows][cols]={{1,1,1,1,0},{1,1,0,1,0},{1,1,0,0,0},{0,0,0,0,0}};
+  vector<char> tempRow;
   for(int i = 0; i<rows; i++){
     for(int j =0; j<cols; j++){
-      grid_input[i].push_back('0'+temp[i][j]);
+      tempRow.push_back('0'+temp[i][j]);
     }
+    grid_input.push_back(tempRow);
+    tempRow.clear();
   }
   int islandCount = islands.numIslands(grid_input);
   std::cout<<"Island Input"<<endl;
