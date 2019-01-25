@@ -42,10 +42,10 @@ public:
 int main() {
   Solution islands;
   vector<vector<char>> grid_input;
-  grid_input.push_back("11110");
-  grid_input.push_back("11010");
-  grid_input.push_back("11000");
-  grid_input.push_back("00000");
+  grid_input[0].push_back(vector<char>("11110"));
+  grid_input[1].push_back(vector<char>("11010"));
+  grid_input[2].push_back(vector<char>("11000"));
+  grid_input[3].push_back(vector<char>("00000"));
   int islandCount = islands.numIslands(grid_input);
   std::cout<<"Island Input"<<endl;
   for(int i=0; i<grid_input.size(); i++){
