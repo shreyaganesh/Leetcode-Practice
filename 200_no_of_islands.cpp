@@ -15,7 +15,7 @@ public:
     if(rows==0)
       return 0;
     int cols = grid[0].size();
-    vector<vector<bool>> visited(rows,vector<cols,false>);
+    vector<vector<bool>> visited(rows,vector<bool>(cols,false));
     for(int i = 0; i<rows; i++) {
       for(int j = 0; j<cols; j++) {
         if(grid[i][j]==1 && ~visited[i][j]){
@@ -28,20 +28,20 @@ public:
 
   void markIslands(vector<vector<char>>& grid,vector<vector<bool>> &visited, int i, int j, int rows, int cols) {
     visited[i][j]=1;
-    if(i>0 && grid[i-1][j]==1 %% ~visited[i-1][j])
+    if(i>0 && grid[i-1][j]==1 && ~visited[i-1][j])
       markIslands(grid, visited, i-1, j, rows, cols);
-    if(j>0 && grid[i][j-1]==1 %% ~visited[i][j-1])
+    if(j>0 && grid[i][j-1]==1 && ~visited[i][j-1])
       markIslands(grid, visited, i, j-1, rows, cols);
-    if(i<(rows-1) && grid[i+1][j]==1 %% ~visited[i+1][j])
+    if(i<(rows-1) && grid[i+1][j]==1 && ~visited[i+1][j])
       markIslands(grid, visited, i+1, j, rows, cols);
-    if(j<(cols-1) && grid[i][j+1]==1 %% ~visited[i][j+1])
+    if(j<(cols-1) && grid[i][j+1]==1 && ~visited[i][j+1])
       markIslands(grid, visited, i, j+1, rows, cols);
   }
 };
 
 int main() {
   Solution islands;
-  vector<vector<char>> grid_input{{"11110"},{"11010"},{"11000"},{"00000"};
+  vector<vector<char>> grid_input{{"11110"},{"11010"},{"11000"},{"00000"}};
   int islandCount = islands.numIslands(grid_input);
   std::cout<<"Island Input"<<endl;
   for(int i=0; i<grid_input.size(); i++){
