@@ -42,8 +42,8 @@ public:
 int main() {
   Solution islands;
   vector<vector<char>> grid_input;
-  int temp[][]={{1,1,1,1,0},{1,1,0,1,0},{1,1,0,0,0},{0,0,0,0,0}};
-  int rows=4, cols=5;
+  const int rows=4, cols=5;
+  int temp[rows][cols]={{1,1,1,1,0},{1,1,0,1,0},{1,1,0,0,0},{0,0,0,0,0}};
   for(int i = 0; i<rows; i++){
     for(int j =0; j<cols; j++){
       grid_input[i].push_back('0'+temp[i][j]);
