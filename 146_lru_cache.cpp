@@ -30,7 +30,7 @@ public:
                 it=values.end();
                 --it;
                 unordered_map<int,list<int>::iterator>::iterator it_m;
-                for(it_m = hashMap.begin(); it_m!=map.end(); it_m++) {
+                for(it_m = hashMap.begin(); it_m!=hashMap.end(); it_m++) {
                   if(it_m->second==it){
                     hashMap.erase(it_m);
                     break;
