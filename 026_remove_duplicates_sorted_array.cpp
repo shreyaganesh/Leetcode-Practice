@@ -4,21 +4,18 @@
 using namespace std;
 
 class Solution {
-	public:
-		    int removeDuplicates(vector<int>& nums) {
-			            if(nums.empty())
-					                return 0;
-				            int lenMaintain = nums.size();
-					            for(int i = lenMaintain-1; i>0; i--){
-							                if(nums[i]==nums[i-1]) {
-										                for(int j = i; j<lenMaintain-1; j++){
-													                    nums[j] = nums[j+1];
-															                    }
-												                lenMaintain--;
-														            }
-									        }
-						            return lenMaintain;        
-							        }
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if(nums.empty())
+            return 0;
+        auto tracker=0;
+        for(int i = 1; i<nums.size(); i++){
+            if(nums[tracker]!=nums[i]) {
+                nums[++tracker]=nums[i];
+            }
+        }
+        return (tracker+1);
+    }
 };
 
 int main() {
