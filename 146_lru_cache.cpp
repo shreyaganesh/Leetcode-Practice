@@ -15,8 +15,8 @@ public:
         if(hashMap.find(key)==hashMap.end())
             return -1;
         else {
-            list<int>::iterator it = hashMap[key];
-            int result=*it;
+            list<pair<int,int>>::iterator it = hashMap[key];
+            int result=(it->second);
             values.splice(values.begin(),values,it);
             return result;
         }
@@ -26,34 +26,28 @@ public:
         if(hashMap.find(key)==hashMap.end()){
             if(currentSize==cacheCapacity)
             {
-                list<int>::iterator it;
-                it=values.end();
+                list<pair<int,int>>::iterator it=values.end();
                 --it;
-                unordered_map<int,list<int>::iterator>::iterator it_m;
-                for(it_m = hashMap.begin(); it_m!=hashMap.end(); it_m++) {
-                  if(it_m->second==it){
-                    hashMap.erase(it_m);
-                    break;
-                  }
-                }
+                hashMap.erase(it->first);
                 values.pop_back();
                 currentSize--;
             }
-            values.push_front(value);
-            list<int>::iterator it=values.begin();
+            pair<int,int> to_insert(key,value);
+            values.push_front(to_insert);
+            list<pair<int,int>>::iterator it=values.begin();
             hashMap.emplace(key,it);
             currentSize++;
             }
         else {
-            list<int>::iterator it = hashMap[key];
-            *it=value;
+            list<pair<int,int>>::iterator it = hashMap[key];
+            (it->second)=value;
             values.splice(values.begin(),values,it);
             }
     }
 
 private:
-    unordered_map<int,list<int>::iterator> hashMap;
-    list<int> values;
+    unordered_map<int,list<pair<int,int>>::iterator> hashMap;
+    list<pair<int,int>> values;
     int currentSize;
     int cacheCapacity;
 };
