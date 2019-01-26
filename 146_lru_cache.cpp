@@ -1,6 +1,6 @@
 #include "iostream"
 #include <list>
-#include <map>
+#include <unordered_map>
 
 using namespace std;
 
@@ -26,6 +26,16 @@ public:
         if(hashMap.find(key)==hashMap.end()){
             if(currentSize==cacheCapacity)
             {
+                list<int>::iterator it;
+                it=values.end();
+                --it;
+                unordered_map<int,list<int>::iterator>::iterator it_m;
+                for(it_m = hashMap.begin(); it_m!=map.end(); it_m++) {
+                  if(it_m->second==it){
+                    hashMap.erase(it_m);
+                    break;
+                  }
+                }
                 values.pop_back();
                 currentSize--;
             }
@@ -56,10 +66,10 @@ private:
  */
 
  int main(){
-   LRUCache cache = new LRUCache(2);
+   LRUCache cache(2);
    /*["LRUCache","put","put","get","put","get","put","get","get","get"]
 [[2],[1,1],[2,2],[1],[3,3],[2],[4,4],[1],[3],[4]]*/
-   cache.put(1,1)
+   cache.put(1,1);
    cache.put(2,2);
    cout<<cache.get(1)<<endl;
    cache.put(3,3);
